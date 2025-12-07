@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans transition-colors duration-300 ease-in-out bg-[#F4F7FE] dark:bg-dark-bg-primary;
+  }
+  
+  /* Scrollbar tùy chỉnh */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full dark:bg-dark-border;
+  }
+
+  /* Custom styles for print */
+  @media print {
+    /* Ẩn các phần tử không cần thiết khi in */
+    .no-print, header, aside, button:not(.print-button) {
+      display: none !important;
+    }
+    
+    /* Định dạng lại layout khi in */
+    body, main {
+      background-color: white !important;
+      color: black !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow: visible !important;
+    }
+
+    /* Đảm bảo các card và bảng hiển thị rõ ràng */
+    .card-print-style, table {
+      border: 1px solid #ddd !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      break-inside: avoid; /* Tránh bị ngắt trang giữa chừng */
+    }
+
+    /* Hiển thị header báo cáo */
+    .print-header {
+      display: block !important;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .print-header h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: black;
+    }
+    .print-header p {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
